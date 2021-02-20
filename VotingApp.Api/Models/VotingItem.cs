@@ -1,21 +1,30 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace VotingApp.Api.Models
 {
     public class VotingItem : IModel<long>
     {
-        public long Id { get; set; }
-        public string Name { get; set; }
+        [Key] public long Id { get; set; }
+        [Required] public string Name { get; set; }
         public string Description { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public long VotersCount { get; set; }
-        public DateTime DueDate { get; set; }
-        public string Categories { get; set; }
+        [Required] public DateTime CreatedDate { get; set; }
+        [Required] public long VotersCount { get; set; }
+        [Required] public DateTime DueDate { get; set; }
+        [Required] public string Categories { get; set; }
 
         public long GetKey()
         {
             return Id;
         }
 
+        public bool ValidateFields()
+        {
+            return Id > 0 &&
+                   !string.IsNullOrWhiteSpace( Name ) &&
+                   CreatedDate < DueDate &&
+                   VotersCount >= 0 &&
+                   !string.IsNullOrWhiteSpace( Categories );
+        }
     }
 }

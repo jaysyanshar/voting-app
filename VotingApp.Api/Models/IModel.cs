@@ -5,5 +5,8 @@
         TKey GetKey();
     }
 
-    public interface IModel { }
+    public interface IModel
+    {
+        bool ValidateFields();
+    }
 }

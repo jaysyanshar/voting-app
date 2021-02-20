@@ -2,11 +2,11 @@
 {
     public static class Gender
     {
-        public static string Male => Enum.Male.ToString();
+        public static string Male => GenderType.Male.ToString();
 
-        public static string Female => Enum.Female.ToString();
+        public static string Female => GenderType.Female.ToString();
 
-        public enum Enum
+        public enum GenderType
         {
             Male, Female
         }

@@ -1,8 +1,7 @@
 ﻿namespace VotingApp.Api.Utils.Validators
 {
-    // TODO: create implementations
-    public interface IValidator
+    public interface IValidator<in T>
     {
-        bool Validate();
+        bool Validate( T data );
     }
 }
