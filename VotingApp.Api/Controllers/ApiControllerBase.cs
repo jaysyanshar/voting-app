@@ -42,6 +42,9 @@ namespace VotingApp.Api.Controllers
         [HttpPost]
         public virtual async Task<ActionResult<TValue>> Post( TValue value )
         {
+            if( !value.ValidateFields() )
+                return ValidationProblem();
+
             await Context.DataSet.AddAsync( value );
             await Context.SaveChangesAsync();
 
@@ -54,6 +57,9 @@ namespace VotingApp.Api.Controllers
         {
             if( !EqualityComparer<TKey>.Default.Equals( id, value.GetKey() ) )
                 return BadRequest();
+
+            if( !value.ValidateFields() )
+                return ValidationProblem();
 
             Context.Entry( value ).State = EntityState.Modified;
 
