@@ -27,7 +27,7 @@ namespace VotingApp.Api
             }
 
             services.AddControllers();
-
+            
             AddDataContext<VotingItemDataContext>();
             AddDataContext<CategoryDataContext>();
             AddDataContext<ClientDataContext>();

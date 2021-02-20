@@ -51,9 +51,10 @@ namespace VotingApp.Api.Controllers
             return await base.Post( session );
         }
 
-        [HttpPut( nameof( Logout ) + "/{id}" )]
-        public async Task<IActionResult> Put( string id )
+        [HttpPut( nameof( Logout ) )]
+        public async Task<IActionResult> Put()
         {
+            string id = Request.Headers[nameof( Session )];
             Session session = await Context.DataSet.FindAsync( id );
             if( session == null )
                 return BadRequest();
@@ -64,28 +65,28 @@ namespace VotingApp.Api.Controllers
 
         public override async Task<IActionResult> Put( string id, Session value )
         {
-            return await Task.FromResult( Forbid() );
+            return NotFound();
         }
 
         public override async Task<ActionResult<IEnumerable<Session>>> GetMany()
         {
-            // TODO: return Forbid
+            // TODO: return Not Found
             return await base.GetMany();
         }
 
         public override async Task<ActionResult<Session>> Get( string id )
         {
-            return await Task.FromResult( Forbid() );
+            return NotFound();
         }
 
         public override async Task<ActionResult<Session>> Post( Session value )
         {
-            return await Task.FromResult( Forbid() );
+            return NotFound();
         }
 
         public override async Task<IActionResult> Delete( string id )
         {
-            return await Task.FromResult( Forbid() );
+            return NotFound();
         }
     }
 }

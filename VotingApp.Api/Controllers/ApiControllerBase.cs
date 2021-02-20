@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VotingApp.Api.DataContexts;
 using VotingApp.Api.Models;
+using VotingApp.Api.Utils.Helpers;
 
 namespace VotingApp.Api.Controllers
 {
@@ -44,6 +45,10 @@ namespace VotingApp.Api.Controllers
         {
             if( !value.ValidateFields() )
                 return ValidationProblem();
+
+            TValue existingData = await Context.DataSet.FindAsync( value.GetKey() );
+            if( existingData != null )
+                return Conflict();
 
             await Context.DataSet.AddAsync( value );
             await Context.SaveChangesAsync();
@@ -93,6 +98,34 @@ namespace VotingApp.Api.Controllers
         protected virtual bool IsExists( TKey id )
         {
             return Context.DataSet.Any( value => EqualityComparer<TKey>.Default.Equals( id, value.GetKey() ) );
+        }
+
+        protected async Task<StatusCodeResult> ValidateSession( string sessionId,
+            UserRole.Type expectedRole, SessionDataContext sessionContext )
+        {
+            if( string.IsNullOrWhiteSpace( sessionId ) )
+                return BadRequest();
+
+            Session session = await sessionContext.DataSet.FindAsync( sessionId );
+
+            if( session == null )
+                return NotFound();
+
+            if( !session.LoggedIn )
+                return Unauthorized();
+
+            try
+            {
+                UserRole.Type actualRole = session.UserRole.ParseEnum<UserRole.Type>();
+                if( actualRole != expectedRole )
+                    return Unauthorized();
+            }
+            catch
+            {
+                return UnprocessableEntity();
+            }
+
+            return Ok();
         }
     }
 }
