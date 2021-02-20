@@ -7,6 +7,7 @@ namespace VotingApp.Api.Utils.Helpers
         private static readonly EmailValidator _emailValidator = new();
         private static readonly PasswordValidator _passwordValidator = new();
         private static readonly NameValidator _nameValidator = new();
+        private static readonly IpValidator _ipValidator = new();
 
         public static bool ValidateEmail( string email )
         {
@@ -21,6 +22,11 @@ namespace VotingApp.Api.Utils.Helpers
         public static bool ValidateName( string name )
         {
             return _nameValidator.Validate( name );
+        }
+
+        public static bool ValidateIpAddress( string ipAddress )
+        {
+            return _ipValidator.Validate( ipAddress );
         }
     }
 }

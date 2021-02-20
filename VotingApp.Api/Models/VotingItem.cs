@@ -20,8 +20,7 @@ namespace VotingApp.Api.Models
 
         public bool ValidateFields()
         {
-            return Id > 0 &&
-                   !string.IsNullOrWhiteSpace( Name ) &&
+            return !string.IsNullOrWhiteSpace( Name ) &&
                    CreatedDate < DueDate &&
                    VotersCount >= 0 &&
                    !string.IsNullOrWhiteSpace( Categories );

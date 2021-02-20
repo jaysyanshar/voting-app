@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using VotingApp.Api.Utils.Helpers;
 
 namespace VotingApp.Api.Models
@@ -13,12 +12,12 @@ namespace VotingApp.Api.Models
 
         public override bool ValidateFields()
         {
-            Gender.GenderType gender;
+            Gender.Type gender;
             try
             {
-                gender = Gender.ParseEnum<Gender.GenderType>();
+                gender = Gender.ParseEnum<Gender.Type>();
             }
-            catch( Exception )
+            catch
             {
                 return false;
             }
@@ -28,7 +27,7 @@ namespace VotingApp.Api.Models
                    ( string.IsNullOrEmpty( LastName ) || 
                      ValidationHelper.ValidateName( LastName ) ) &&
                    Age > 0 && 
-                   gender >= 0;
+                   gender != default;
         }
     }
 }
