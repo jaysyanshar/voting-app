@@ -3,7 +3,7 @@ using VotingApp.Api.Utils.Helpers;
 
 namespace VotingApp.Api.Models
 {
-    public abstract class UserBase : IModel<string>
+    public class User : IModel<string>
     {
         [Key] public string Email { get; set; }
         [Required] public string Password { get; set; }

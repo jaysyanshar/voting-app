@@ -3,7 +3,7 @@ using VotingApp.Api.Utils.Helpers;
 
 namespace VotingApp.Api.Models
 {
-    public class Client : UserBase
+    public class Client : User
     {
         [Required] public string FirstName { get; set; }
         public string LastName { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace VotingApp.Api.Models
 {
-    public class Admin : UserBase
+    public class Admin : User
     {
     }
 }
