@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using VotingApp.Api.DataContexts;
 using VotingApp.Api.Models;
@@ -20,6 +21,7 @@ namespace VotingApp.Api.Controllers
             _clientContext = clientContext;
         }
 
+        // TODO: A-1
         [HttpPost( nameof( Login ) )]
         public async Task<ActionResult<Session>> Post( Login value )
         {
@@ -32,6 +34,9 @@ namespace VotingApp.Api.Controllers
             else
                 user = await _clientContext.DataSet.FindAsync( value.Email );
 
+            if( user == null )
+                return NotFound();
+
             if( !user.Password.Equals( value.Password ) )
                 return Unauthorized();
 
@@ -39,10 +44,48 @@ namespace VotingApp.Api.Controllers
             {
                 IpAddress = Request.HttpContext.Connection.RemoteIpAddress?.MapToIPv4().ToString(),
                 UserEmail = value.Email,
-                UserRole = value.UserRole
+                UserRole = value.UserRole,
+                LoggedIn = true
             };
 
             return await base.Post( session );
+        }
+
+        [HttpPut( nameof( Logout ) + "/{id}" )]
+        public async Task<IActionResult> Put( string id )
+        {
+            Session session = await Context.DataSet.FindAsync( id );
+            if( session == null )
+                return BadRequest();
+
+            session.LoggedIn = false;
+            return await base.Put( id, session );
+        }
+
+        public override async Task<IActionResult> Put( string id, Session value )
+        {
+            return await Task.FromResult( Forbid() );
+        }
+
+        public override async Task<ActionResult<IEnumerable<Session>>> GetMany()
+        {
+            // TODO: return Forbid
+            return await base.GetMany();
+        }
+
+        public override async Task<ActionResult<Session>> Get( string id )
+        {
+            return await Task.FromResult( Forbid() );
+        }
+
+        public override async Task<ActionResult<Session>> Post( Session value )
+        {
+            return await Task.FromResult( Forbid() );
+        }
+
+        public override async Task<IActionResult> Delete( string id )
+        {
+            return await Task.FromResult( Forbid() );
         }
     }
 }

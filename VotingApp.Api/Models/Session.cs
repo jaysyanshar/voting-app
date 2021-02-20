@@ -13,6 +13,7 @@ namespace VotingApp.Api.Models
         [Required] public string IpAddress { get; set; }
         [Required] public string UserEmail { get; set; }
         [Required] public string UserRole { get; set; }
+        [Required] public bool LoggedIn { get; set; }
 
         public string GetKey()
         {
