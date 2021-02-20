@@ -1,8 +1,14 @@
 ﻿namespace VotingApp.Api.Models
 {
-    public enum Gender
+    public static class Gender
     {
-        Male,
-        Female
+        public static string Male => Enum.Male.ToString();
+
+        public static string Female => Enum.Female.ToString();
+
+        public enum Enum
+        {
+            Male, Female
+        }
     }
 }

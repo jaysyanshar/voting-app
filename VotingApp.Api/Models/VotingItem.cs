@@ -10,11 +10,12 @@ namespace VotingApp.Api.Models
         public DateTime CreatedDate { get; set; }
         public long VotersCount { get; set; }
         public DateTime DueDate { get; set; }
-        public Category[] Categories { get; set; }
+        public string Categories { get; set; }
 
         public long GetKey()
         {
             return Id;
         }
+
     }
 }

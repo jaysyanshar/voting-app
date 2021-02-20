@@ -6,9 +6,9 @@ namespace VotingApp.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoriesController : ApiControllerBase<int, Category, CategoryDataContext>
+    public class AdminsController : ApiControllerBase<string, Admin, AdminDataContext>
     {
-        public CategoriesController( CategoryDataContext context ) : base( context )
+        public AdminsController( AdminDataContext context ) : base( context )
         {
         }
     }

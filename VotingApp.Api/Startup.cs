@@ -30,6 +30,7 @@ namespace VotingApp.Api
             AddDataContext<VotingItemDataContext>();
             AddDataContext<CategoryDataContext>();
             AddDataContext<ClientDataContext>();
+            AddDataContext<AdminDataContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

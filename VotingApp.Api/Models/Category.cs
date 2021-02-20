@@ -1,11 +1,11 @@
 ﻿namespace VotingApp.Api.Models
 {
-    public class Category : IModel<long>
+    public class Category : IModel<int>
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
 
-        public long GetKey()
+        public int GetKey()
         {
             return Id;
         }
