@@ -12,5 +12,14 @@ namespace VotingApp.Api.DataContexts
         }
 
         public DbSet<TEntity> DataSet { get; set; }
+
+        protected override void OnModelCreating( ModelBuilder modelBuilder )
+        {
+            modelBuilder.Entity<TEntity>( entity =>
+            {
+                entity.ToTable( typeof( TEntity ).Name );
+            } );
+        }
+
     }
 }
