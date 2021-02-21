@@ -1,11 +1,14 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VotingApp.Api.Models
 {
-    public class VotingItem : IModel<long>
+    public class VotingItem : IModel<string>
     {
-        [Key] public long Id { get; set; }
+        [Key, DatabaseGenerated( DatabaseGeneratedOption.Identity )]
+        public string Id { get; set; }
+
         [Required] public string Name { get; set; }
         public string Description { get; set; }
         [Required] public DateTime CreatedDate { get; set; }
@@ -13,7 +16,7 @@ namespace VotingApp.Api.Models
         [Required] public DateTime DueDate { get; set; }
         [Required] public string Categories { get; set; }
 
-        public long GetKey()
+        public string GetKey()
         {
             return Id;
         }

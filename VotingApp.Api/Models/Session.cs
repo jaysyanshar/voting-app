@@ -6,8 +6,7 @@ namespace VotingApp.Api.Models
 {
     public class Session : IModel<string>
     {
-        [Key]
-        [DatabaseGenerated( DatabaseGeneratedOption.Identity )]
+        [Key, DatabaseGenerated( DatabaseGeneratedOption.Identity )]
         public string Id { get; set; }
 
         [Required] public string IpAddress { get; set; }

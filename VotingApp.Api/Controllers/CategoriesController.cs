@@ -8,7 +8,7 @@ namespace VotingApp.Api.Controllers
 {
     [Route( "api/[controller]" )]
     [ApiController]
-    public class CategoriesController : ApiControllerBase<int, Category, CategoryDataContext>
+    public class CategoriesController : ApiControllerBase<string, Category, CategoryDataContext>
     {
         private readonly SessionDataContext _sessionContext;
 
@@ -27,7 +27,7 @@ namespace VotingApp.Api.Controllers
             return await base.GetMany();
         }
 
-        public override async Task<ActionResult<Category>> Get( int id )
+        public override async Task<ActionResult<Category>> Get( string id )
         {
             StatusCodeResult result = await SessionCheck();
             if( !( result is OkResult ) )
@@ -45,7 +45,7 @@ namespace VotingApp.Api.Controllers
             return await base.Post( value );
         }
 
-        public override async Task<IActionResult> Put( int id, Category value )
+        public override async Task<IActionResult> Put( string id, Category value )
         {
             StatusCodeResult result = await SessionCheck();
             if( !( result is OkResult ) )
@@ -54,7 +54,7 @@ namespace VotingApp.Api.Controllers
             return await base.Put( id, value );
         }
 
-        public override async Task<IActionResult> Delete( int id )
+        public override async Task<IActionResult> Delete( string id )
         {
             StatusCodeResult result = await SessionCheck();
             if( !( result is OkResult ) )

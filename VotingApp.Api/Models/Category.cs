@@ -1,13 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VotingApp.Api.Models
 {
-    public class Category : IModel<int>
+    public class Category : IModel<string>
     {
-        [Key] public int Id { get; set; }
+        [Key, DatabaseGenerated( DatabaseGeneratedOption.Identity )]
+        public string Id { get; set; }
+
         [Required] public string Name { get; set; }
 
-        public int GetKey()
+        public string GetKey()
         {
             return Id;
         }

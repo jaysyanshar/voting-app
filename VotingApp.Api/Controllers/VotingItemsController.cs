@@ -11,7 +11,7 @@ namespace VotingApp.Api.Controllers
 {
     [Route( "api/[controller]" )]
     [ApiController]
-    public class VotingItemsController : ApiControllerBase<long, VotingItem, VotingItemDataContext>
+    public class VotingItemsController : ApiControllerBase<string, VotingItem, VotingItemDataContext>
     {
         private readonly SessionDataContext _sessionContext;
         private readonly CategoryDataContext _categoryContext;
@@ -41,7 +41,7 @@ namespace VotingApp.Api.Controllers
             return await base.Post( value );
         }
 
-        public override async Task<IActionResult> Put( long id, VotingItem value )
+        public override async Task<IActionResult> Put( string id, VotingItem value )
         {
             string sessionId = Request.Headers[nameof( Session )];
             StatusCodeResult result = await ValidateSession( sessionId, UserRole.Type.Admin, _sessionContext );
@@ -55,7 +55,7 @@ namespace VotingApp.Api.Controllers
             return await base.Put( id, value );
         }
 
-        public override async Task<IActionResult> Delete( long id )
+        public override async Task<IActionResult> Delete( string id )
         {
             string sessionId = Request.Headers[nameof( Session )];
             StatusCodeResult result = await ValidateSession( sessionId, UserRole.Type.Admin, _sessionContext );

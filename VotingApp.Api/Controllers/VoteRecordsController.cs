@@ -9,7 +9,7 @@ namespace VotingApp.Api.Controllers
 {
     [Route( "api/[controller]" )]
     [ApiController]
-    public class VoteRecordsController : ApiControllerBase<long, VoteRecord, VoteRecordDataContext>
+    public class VoteRecordsController : ApiControllerBase<string, VoteRecord, VoteRecordDataContext>
     {
         private readonly SessionDataContext _sessionContext;
         private readonly VotingItemDataContext _votingItemContext;
@@ -24,7 +24,7 @@ namespace VotingApp.Api.Controllers
 
         // TODO: B-3
         [HttpPost( "Vote/{itemId}" )]
-        public async Task<ActionResult<VoteRecord>> Post( long itemId )
+        public async Task<ActionResult<VoteRecord>> Post( string itemId )
         {
             // TODO: B-5
             StatusCodeResult userValid = await ValidateUser( UserRole.Type.Client );
@@ -57,9 +57,9 @@ namespace VotingApp.Api.Controllers
 
         public override async Task<ActionResult<VoteRecord>> Post( VoteRecord value ) => NotFound();
 
-        public override async Task<IActionResult> Put( long id, VoteRecord value ) => NotFound();
+        public override async Task<IActionResult> Put( string id, VoteRecord value ) => NotFound();
 
-        public override async Task<IActionResult> Delete( long id )
+        public override async Task<IActionResult> Delete( string id )
         {
             StatusCodeResult userValid = await ValidateUser( UserRole.Type.Client );
             if( !( userValid is OkResult ) )
