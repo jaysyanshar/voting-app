@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingApp.Api", "VotingApp.Api\VotingApp.Api.csproj", "{BEFAFBD3-2D1E-470E-B8A7-AE4777F33764}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VotingApp.Api", "VotingApp.Api\VotingApp.Api.csproj", "{BEFAFBD3-2D1E-470E-B8A7-AE4777F33764}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingApp.Admin", "VotingApp.Admin\VotingApp.Admin.csproj", "{6EC53999-54C3-4AA1-AF75-B847FBE05FEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingApp.Core", "VotingApp.Core\VotingApp.Core.csproj", "{35E6F387-D2A2-458A-B7C0-718A49E2B8C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{BEFAFBD3-2D1E-470E-B8A7-AE4777F33764}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEFAFBD3-2D1E-470E-B8A7-AE4777F33764}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEFAFBD3-2D1E-470E-B8A7-AE4777F33764}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EC53999-54C3-4AA1-AF75-B847FBE05FEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EC53999-54C3-4AA1-AF75-B847FBE05FEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EC53999-54C3-4AA1-AF75-B847FBE05FEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EC53999-54C3-4AA1-AF75-B847FBE05FEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35E6F387-D2A2-458A-B7C0-718A49E2B8C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35E6F387-D2A2-458A-B7C0-718A49E2B8C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35E6F387-D2A2-458A-B7C0-718A49E2B8C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35E6F387-D2A2-458A-B7C0-718A49E2B8C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
