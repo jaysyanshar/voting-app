@@ -1,4 +1,6 @@
-﻿namespace VotingApp.Core.Utils.Validators
+﻿using System.Text.RegularExpressions;
+
+namespace VotingApp.Core.Utils.Validators
 {
     public class IpValidator : IValidator<string>
     {
@@ -8,7 +10,7 @@
             if( string.IsNullOrWhiteSpace( data ) )
                 return false;
 
-            Regex ip = new(
+            Regex ip = new Regex(
                 @"^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$" );
 
             return ip.IsMatch( data );

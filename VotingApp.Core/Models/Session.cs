@@ -4,13 +4,12 @@ namespace VotingApp.Core.Models
 {
     public class Session : IModel<string>
     {
-        [Key, DatabaseGenerated( DatabaseGeneratedOption.Identity )]
-        public string Id { get; set; }
+        public virtual string Id { get; set; }
 
-        [Required] public string IpAddress { get; set; }
-        [Required] public string UserEmail { get; set; }
-        [Required] public string UserRole { get; set; }
-        [Required] public bool LoggedIn { get; set; }
+        public virtual string IpAddress { get; set; }
+        public virtual string UserEmail { get; set; }
+        public virtual string UserRole { get; set; }
+        public virtual bool LoggedIn { get; set; }
 
         public string GetKey()
         {

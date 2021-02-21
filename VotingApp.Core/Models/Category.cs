@@ -2,10 +2,9 @@
 {
     public class Category : IModel<string>
     {
-        [Key, DatabaseGenerated( DatabaseGeneratedOption.Identity )]
-        public string Id { get; set; }
+        public virtual string Id { get; set; }
 
-        [Required] public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         public string GetKey()
         {

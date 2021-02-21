@@ -5,7 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VotingApp.Api.DataContexts;
-using VotingApp.Api.Models;
+using VotingApp.Core.Models;
+using Category = VotingApp.Api.Models.Category;
+using Session = VotingApp.Api.Models.Session;
+using VotingItem = VotingApp.Api.Models.VotingItem;
 
 namespace VotingApp.Api.Controllers
 {

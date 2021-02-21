@@ -4,10 +4,10 @@ namespace VotingApp.Core.Utils.Helpers
 {
     public static class ValidationHelper
     {
-        private static readonly EmailValidator _emailValidator = new();
-        private static readonly PasswordValidator _passwordValidator = new();
-        private static readonly NameValidator _nameValidator = new();
-        private static readonly IpValidator _ipValidator = new();
+        private static readonly EmailValidator _emailValidator = new EmailValidator();
+        private static readonly PasswordValidator _passwordValidator = new PasswordValidator();
+        private static readonly NameValidator _nameValidator = new NameValidator();
+        private static readonly IpValidator _ipValidator = new IpValidator();
 
         public static bool ValidateEmail( string email )
         {

@@ -4,11 +4,10 @@ namespace VotingApp.Core.Models
 {
     public class VoteRecord : IModel<string>
     {
-        [Key, DatabaseGenerated( DatabaseGeneratedOption.Identity )]
-        public string Id { get; set; }
+        public virtual string Id { get; set; }
 
-        [Required] public string UserEmail { get; set; }
-        [Required] public string VotingItemId { get; set; }
+        public virtual string UserEmail { get; set; }
+        public virtual string VotingItemId { get; set; }
 
         public string GetKey()
         {

@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using VotingApp.Api.Models;
+using VotingApp.Core.Models;
 
 namespace VotingApp.Api.DataContexts
 {

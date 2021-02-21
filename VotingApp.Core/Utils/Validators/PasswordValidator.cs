@@ -1,4 +1,6 @@
-﻿namespace VotingApp.Core.Utils.Validators
+﻿using System.Text.RegularExpressions;
+
+namespace VotingApp.Core.Utils.Validators
 {
     public class PasswordValidator : IValidator<string>
     {
@@ -8,10 +10,10 @@
             if( string.IsNullOrWhiteSpace( data ) )
                 return false;
 
-            Regex uppercase = new( @"[A-Z]+" );
-            Regex lowercase = new( @"[a-z]+" );
-            Regex number = new( @"[0-9]+" );
-            Regex min8Char = new( @".{8,}" );
+            Regex uppercase = new Regex( @"[A-Z]+" );
+            Regex lowercase = new Regex( @"[a-z]+" );
+            Regex number = new Regex( @"[0-9]+" );
+            Regex min8Char = new Regex( @".{8,}" );
 
             return number.IsMatch( data ) &&
                    uppercase.IsMatch( data ) &&

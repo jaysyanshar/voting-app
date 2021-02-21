@@ -4,7 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using VotingApp.Api.DataContexts;
-using VotingApp.Api.Models;
+using VotingApp.Core.Models;
+using Session = VotingApp.Api.Models.Session;
+using VoteRecord = VotingApp.Api.Models.VoteRecord;
+using VotingItem = VotingApp.Api.Models.VotingItem;
 
 namespace VotingApp.Api.Controllers
 {

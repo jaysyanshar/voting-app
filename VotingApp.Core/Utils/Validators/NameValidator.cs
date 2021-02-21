@@ -1,4 +1,6 @@
-﻿namespace VotingApp.Core.Utils.Validators
+﻿using System.Text.RegularExpressions;
+
+namespace VotingApp.Core.Utils.Validators
 {
     public class NameValidator : IValidator<string>
     {
@@ -8,7 +10,7 @@
             if( string.IsNullOrWhiteSpace( data ) )
                 return false;
 
-            Regex name = new( @"^[A-Z][a-zA-Z]*$" );
+            Regex name = new Regex( @"^[A-Z][a-zA-Z]*$" );
             return name.IsMatch( data );
         }
     }

@@ -1,16 +1,17 @@
-﻿namespace VotingApp.Core.Models
+﻿using System;
+
+namespace VotingApp.Core.Models
 {
     public class VotingItem : IModel<string>
     {
-        [Key, DatabaseGenerated( DatabaseGeneratedOption.Identity )]
-        public string Id { get; set; }
+        public virtual string Id { get; set; }
 
-        [Required] public string Name { get; set; }
-        public string Description { get; set; }
-        [Required] public DateTime CreatedDate { get; set; }
-        [Required] public long VotersCount { get; set; }
-        [Required] public DateTime DueDate { get; set; }
-        [Required] public string Categories { get; set; }
+        public virtual string Name { get; set; }
+        public virtual string Description { get; set; }
+        public virtual DateTime CreatedDate { get; set; }
+        public virtual long VotersCount { get; set; }
+        public virtual DateTime DueDate { get; set; }
+        public virtual string Categories { get; set; }
 
         public string GetKey()
         {

@@ -4,10 +4,10 @@ namespace VotingApp.Core.Models
 {
     public class Client : User
     {
-        [Required] public string FirstName { get; set; }
-        public string LastName { get; set; }
-        [Required] public int Age { get; set; }
-        [Required] public string Gender { get; set; }
+        public virtual string FirstName { get; set; }
+        public virtual string LastName { get; set; }
+        public virtual int Age { get; set; }
+        public virtual string Gender { get; set; }
 
         public override bool ValidateFields()
         {

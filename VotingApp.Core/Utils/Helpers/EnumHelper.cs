@@ -1,4 +1,6 @@
-﻿namespace VotingApp.Core.Utils.Helpers
+﻿using System;
+
+namespace VotingApp.Core.Utils.Helpers
 {
     public static class EnumHelper
     {

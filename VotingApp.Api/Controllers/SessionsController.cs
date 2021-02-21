@@ -2,8 +2,11 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using VotingApp.Api.DataContexts;
-using VotingApp.Api.Models;
-using VotingApp.Api.Utils.Helpers;
+using VotingApp.Core.Models;
+using VotingApp.Core.Utils.Helpers;
+using Login = VotingApp.Api.Models.Login;
+using Session = VotingApp.Api.Models.Session;
+using User = VotingApp.Core.Models.User;
 
 namespace VotingApp.Api.Controllers
 {

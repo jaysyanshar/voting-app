@@ -1,33 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using VotingApp.Api.Utils.Helpers;
 
 namespace VotingApp.Api.Models
 {
-    public class Client : User
+    public class Client : Core.Models.Client
     {
-        [Required] public string FirstName { get; set; }
-        public string LastName { get; set; }
-        [Required] public int Age { get; set; }
-        [Required] public string Gender { get; set; }
-
-        public override bool ValidateFields()
-        {
-            Gender.Type gender;
-            try
-            {
-                gender = Gender.ParseEnum<Gender.Type>();
-            }
-            catch
-            {
-                return false;
-            }
-
-            return base.ValidateFields() &&
-                   ValidationHelper.ValidateName( FirstName ) &&
-                   ( string.IsNullOrEmpty( LastName ) || 
-                     ValidationHelper.ValidateName( LastName ) ) &&
-                   Age > 0 && 
-                   gender != default;
-        }
+        [Key] public override string Email { get; set; }
+        [Required] public override string Password { get; set; }
+        [Required] public override string FirstName { get; set; }
+        public override string LastName { get; set; }
+        [Required] public override int Age { get; set; }
+        [Required] public override string Gender { get; set; }
     }
 }

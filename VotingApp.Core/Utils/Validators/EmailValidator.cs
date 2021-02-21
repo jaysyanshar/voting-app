@@ -1,4 +1,7 @@
-﻿namespace VotingApp.Core.Utils.Validators
+﻿using System;
+using System.Net.Mail;
+
+namespace VotingApp.Core.Utils.Validators
 {
     public class EmailValidator : IValidator<string>
     {
@@ -10,7 +13,7 @@
 
             try
             {
-                MailAddress mail = new( data );
+                MailAddress mail = new MailAddress( data );
                 return mail.Address.Equals( data );
             }
             catch( FormatException )

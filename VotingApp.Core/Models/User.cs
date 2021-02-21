@@ -4,8 +4,8 @@ namespace VotingApp.Core.Models
 {
     public class User : IModel<string>
     {
-        [Key] public string Email { get; set; }
-        [Required] public string Password { get; set; }
+        public virtual string Email { get; set; }
+        public virtual string Password { get; set; }
 
         public string GetKey()
         {

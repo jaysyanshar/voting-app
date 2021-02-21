@@ -4,8 +4,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VotingApp.Api.DataContexts;
-using VotingApp.Api.Models;
-using VotingApp.Api.Utils.Helpers;
+using VotingApp.Core.Models;
+using VotingApp.Core.Utils.Helpers;
+using Session = VotingApp.Api.Models.Session;
 
 namespace VotingApp.Api.Controllers
 {

@@ -1,39 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using VotingApp.Api.Utils.Helpers;
 
 namespace VotingApp.Api.Models
 {
-    public class Session : IModel<string>
+    public class Session : Core.Models.Session
     {
         [Key, DatabaseGenerated( DatabaseGeneratedOption.Identity )]
-        public string Id { get; set; }
+        public override string Id { get; set; }
 
-        [Required] public string IpAddress { get; set; }
-        [Required] public string UserEmail { get; set; }
-        [Required] public string UserRole { get; set; }
-        [Required] public bool LoggedIn { get; set; }
+        [Required] public override string IpAddress { get; set; }
+        [Required] public override string UserEmail { get; set; }
+        [Required] public override string UserRole { get; set; }
+        [Required] public override bool LoggedIn { get; set; }
 
-        public string GetKey()
-        {
-            return Id;
-        }
-
-        public bool ValidateFields()
-        {
-            UserRole.Type userRole;
-            try
-            {
-                userRole = UserRole.ParseEnum<UserRole.Type>();
-            }
-            catch
-            {
-                return false;
-            }
-
-            return ValidationHelper.ValidateIpAddress( IpAddress ) &&
-                   ValidationHelper.ValidateEmail( UserEmail ) &&
-                   userRole != default;
-        }
     }
 }

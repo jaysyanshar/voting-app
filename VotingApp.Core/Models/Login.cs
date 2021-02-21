@@ -4,7 +4,7 @@ namespace VotingApp.Core.Models
 {
     public class Login : User
     {
-        [Required] public string UserRole { get; set; }
+        public virtual string UserRole { get; set; }
 
         public override bool ValidateFields()
         {
