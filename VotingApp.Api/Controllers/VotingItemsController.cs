@@ -13,20 +13,27 @@ namespace VotingApp.Api.Controllers
     public class VotingItemsController : ApiControllerBase<long, VotingItem, VotingItemDataContext>
     {
         private readonly SessionDataContext _sessionContext;
+        private readonly CategoryDataContext _categoryContext;
 
-        public VotingItemsController( VotingItemDataContext context, SessionDataContext sessionContext ) :
+        public VotingItemsController( VotingItemDataContext context, SessionDataContext sessionContext,
+            CategoryDataContext categoryContext ) :
             base( context )
         {
             _sessionContext = sessionContext;
+            _categoryContext = categoryContext;
         }
 
         // TODO: A-2
         public override async Task<ActionResult<VotingItem>> Post( VotingItem value )
         {
             string sessionId = Request.Headers[nameof( Session )];
-            StatusCodeResult result = await ValidateSession( sessionId, UserRole.Type.Admin, _sessionContext  );
-            if( !( result is OkResult ) )
-                return result;
+            StatusCodeResult sessionValid = await ValidateSession( sessionId, UserRole.Type.Admin, _sessionContext  );
+            if( !( sessionValid is OkResult ) )
+                return sessionValid;
+
+            StatusCodeResult categoryValid = await CategoryCheck( value );
+            if( !( categoryValid is OkResult ) )
+                return categoryValid;
 
             return await base.Post( value );
         }
@@ -51,20 +58,18 @@ namespace VotingApp.Api.Controllers
             return await base.Delete( id );
         }
 
+        // TODO: A-3
         [HttpGet( "Page" )]
-        public async Task<ActionResult<IEnumerable<VotingItem>>> GetManyByPage( [FromQuery] int index = 0,
-            [FromQuery] int count = 20 )
+        public async Task<ActionResult<IEnumerable<VotingItem>>> GetManyByPage( [FromQuery] int skip = 0,
+            [FromQuery] int take = 20 )
         {
-            if( index < 0 )
+            if( skip < 0 || take <= 0 )
                 return BadRequest();
 
-            if( count <= 0 )
-                return BadRequest();
-
-            // TODO: solve bugs on LINQ expression
-            return await Context.DataSet.Where( (val, i) => i >= index && i < count ).ToListAsync();
+            return await Context.DataSet.Skip( skip ).Take( take ).ToListAsync();
         }
 
+        // TODO: A-4
         [HttpGet( "Search" )]
         public async Task<ActionResult<IEnumerable<VotingItem>>> GetManyBySearch( [FromQuery] string name )
         {
@@ -75,6 +80,7 @@ namespace VotingApp.Api.Controllers
                 .ToListAsync();
         }
 
+        // TODO: A-5
         [HttpGet( "Filter" )]
         public async Task<ActionResult<IEnumerable<VotingItem>>> GetManyByFilter( [FromQuery] string category )
         {
@@ -83,6 +89,18 @@ namespace VotingApp.Api.Controllers
 
             return await Context.DataSet.Where( val => val.Categories.ToLower().Contains( category.ToLower() ) )
                 .ToListAsync();
+        }
+
+        private async Task<StatusCodeResult> CategoryCheck( VotingItem value )
+        {
+            Category category =
+                await _categoryContext.DataSet.FirstOrDefaultAsync(
+                    c => c.Name.ToLower().Equals( value.Categories.ToLower() ) );
+
+            if( category == null )
+                return NotFound();
+
+            return Ok();
         }
     }
 }
