@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +36,8 @@ namespace VotingApp.Api.Controllers
             if( !( categoryValid is OkResult ) )
                 return categoryValid;
 
+            value.CreatedDate = DateTime.Now;
+            
             return await base.Post( value );
         }
 
@@ -44,6 +47,10 @@ namespace VotingApp.Api.Controllers
             StatusCodeResult result = await ValidateSession( sessionId, UserRole.Type.Admin, _sessionContext );
             if( !( result is OkResult ) )
                 return result;
+
+            VotingItem existingData = await Context.DataSet.FindAsync( id );
+            if( value.CreatedDate != existingData.CreatedDate )
+                return BadRequest();
 
             return await base.Put( id, value );
         }
@@ -58,6 +65,8 @@ namespace VotingApp.Api.Controllers
             return await base.Delete( id );
         }
 
+        // TODO: B-6
+        // TODO: B-7
         // TODO: A-3
         [HttpGet( "Page" )]
         public async Task<ActionResult<IEnumerable<VotingItem>>> GetManyByPage( [FromQuery] int skip = 0,

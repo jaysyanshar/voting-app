@@ -22,6 +22,7 @@ namespace VotingApp.Api.Controllers
         }
 
         // TODO: A-1
+        // TODO: B-1
         [HttpPost( nameof( Login ) )]
         public async Task<ActionResult<Session>> Post( Login value )
         {
@@ -31,13 +32,12 @@ namespace VotingApp.Api.Controllers
             User user;
             if( value.UserRole.ParseEnum<UserRole.Type>() == UserRole.Type.Admin )
                 user = await _adminContext.DataSet.FindAsync( value.Email );
-            else
+            else if( value.UserRole.ParseEnum<UserRole.Type>() == UserRole.Type.Client )
                 user = await _clientContext.DataSet.FindAsync( value.Email );
+            else
+                user = null;
 
-            if( user == null )
-                return NotFound();
-
-            if( !user.Password.Equals( value.Password ) )
+            if( user == null || !user.Password.Equals( value.Password ) )
                 return Unauthorized();
 
             Session session = new()
@@ -51,7 +51,7 @@ namespace VotingApp.Api.Controllers
             return await base.Post( session );
         }
 
-        [HttpPut( nameof( Logout ) )]
+        [HttpPut( "Logout" )]
         public async Task<IActionResult> Put()
         {
             string id = Request.Headers[nameof( Session )];
@@ -63,30 +63,14 @@ namespace VotingApp.Api.Controllers
             return await base.Put( id, session );
         }
 
-        public override async Task<IActionResult> Put( string id, Session value )
-        {
-            return NotFound();
-        }
+        public override async Task<IActionResult> Put( string id, Session value ) => NotFound();
 
-        public override async Task<ActionResult<IEnumerable<Session>>> GetMany()
-        {
-            // TODO: return Not Found
-            return await base.GetMany();
-        }
+        public override async Task<ActionResult<IEnumerable<Session>>> GetMany() => NotFound();
 
-        public override async Task<ActionResult<Session>> Get( string id )
-        {
-            return NotFound();
-        }
+        public override async Task<ActionResult<Session>> Get( string id ) => NotFound();
 
-        public override async Task<ActionResult<Session>> Post( Session value )
-        {
-            return NotFound();
-        }
+        public override async Task<ActionResult<Session>> Post( Session value ) => NotFound();
 
-        public override async Task<IActionResult> Delete( string id )
-        {
-            return NotFound();
-        }
+        public override async Task<IActionResult> Delete( string id ) => NotFound();
     }
 }
