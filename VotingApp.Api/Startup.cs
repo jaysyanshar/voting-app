@@ -20,10 +20,10 @@ namespace VotingApp.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string connectionString = Configuration.GetConnectionString( "VotingAppDb" );
+
             void AddDataContext<TContext>() where TContext : DbContext
             {
-                // TODO: use option SQL Server instead of In-Memory Database
-                string connectionString = Configuration.GetConnectionString( "VotingAppDb" );
                 services.AddDbContext<TContext>( opt => opt.UseSqlServer( connectionString ) );
             }
 
