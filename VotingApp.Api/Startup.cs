@@ -23,7 +23,8 @@ namespace VotingApp.Api
             void AddDataContext<TContext>() where TContext : DbContext
             {
                 // TODO: use option SQL Server instead of In-Memory Database
-                services.AddDbContext<TContext>( opt => opt.UseInMemoryDatabase( "VotingApp" ) );
+                string connectionString = Configuration.GetConnectionString( "VotingAppDb" );
+                services.AddDbContext<TContext>( opt => opt.UseSqlServer( connectionString ) );
             }
 
             services.AddControllers();
