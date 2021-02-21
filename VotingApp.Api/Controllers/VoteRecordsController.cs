@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using VotingApp.Api.DataContexts;
 using VotingApp.Api.Models;
 
@@ -52,6 +53,12 @@ namespace VotingApp.Api.Controllers
             if( existingRecord != null )
                 return Conflict();
 
+            votingItem.VotersCount++;
+            StatusCodeResult updateResult = await UpdateVotingItem( votingItem );
+
+            if( !( updateResult is OkResult ) )
+                return updateResult;
+
             return await base.Post( value );
         }
 
@@ -73,6 +80,16 @@ namespace VotingApp.Api.Controllers
             if( !session.UserEmail.Equals( voteRecord.UserEmail ) )
                 return Unauthorized();
 
+            VotingItem votingItem = await _votingItemContext.DataSet.FindAsync( voteRecord.VotingItemId );
+            if( votingItem == null )
+                return NotFound();
+
+            votingItem.VotersCount--;
+            StatusCodeResult updateResult = await UpdateVotingItem( votingItem );
+
+            if( !( updateResult is OkResult ) )
+                return BadRequest();
+
             return await base.Delete( id );
         }
 
@@ -84,6 +101,25 @@ namespace VotingApp.Api.Controllers
 
             StatusCodeResult sessionValid = await ValidateSession( sessionId, role, _sessionContext );
             return sessionValid;
+        }
+
+        private async Task<StatusCodeResult> UpdateVotingItem( VotingItem item )
+        {
+            _votingItemContext.Entry( item ).State = EntityState.Modified;
+            try
+            {
+                await _votingItemContext.SaveChangesAsync();
+            }
+            catch( DbUpdateConcurrencyException ) when( !IsExists( item.Id ) )
+            {
+                return NotFound();
+            }
+            catch( Exception )
+            {
+                return BadRequest();
+            }
+
+            return Ok();
         }
     }
 }
