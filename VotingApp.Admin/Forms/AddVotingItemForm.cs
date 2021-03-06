@@ -18,7 +18,6 @@ namespace VotingApp.Admin.Forms
         {
             InitializeComponent();
 
-            comboBoxCategories.DropDownStyle = ComboBoxStyle.DropDownList;
             dateTimePickerDueDate.MinDate = DateTime.Now.Add( TimeSpan.FromDays( 1 ) );
 
             HttpClient client = DependencyService.Resolve<HttpClient>();

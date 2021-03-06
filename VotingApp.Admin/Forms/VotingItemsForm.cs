@@ -170,7 +170,11 @@ namespace VotingApp.Admin.Forms
             VotingItem selected = ( VotingItem ) listViewVotingItems.SelectedItems[0].Tag;
 
             VotingItemDetailForm form = new VotingItemDetailForm( selected );
-            form.Show();
+            DialogResult dialogResult = form.ShowDialog();
+            if( dialogResult == DialogResult.OK )
+            {
+                LoadItemsByPage();
+            }
         }
 
         private void buttonNext_Click( object sender, EventArgs e )

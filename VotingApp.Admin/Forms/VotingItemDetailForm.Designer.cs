@@ -85,16 +85,16 @@ namespace VotingApp.Admin.Forms
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(316, 380);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(316, 280);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // labelCategories
             // 
             this.labelCategories.AutoSize = true;
             this.labelCategories.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelCategories.Location = new System.Drawing.Point(90, 287);
+            this.labelCategories.Location = new System.Drawing.Point(90, 203);
             this.labelCategories.Name = "labelCategories";
-            this.labelCategories.Size = new System.Drawing.Size(218, 47);
+            this.labelCategories.Size = new System.Drawing.Size(218, 33);
             this.labelCategories.TabIndex = 14;
             this.labelCategories.Text = "Categories Label";
             this.labelCategories.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -103,9 +103,9 @@ namespace VotingApp.Admin.Forms
             // 
             this.label13.AutoSize = true;
             this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Location = new System.Drawing.Point(8, 287);
+            this.label13.Location = new System.Drawing.Point(8, 203);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(76, 47);
+            this.label13.Size = new System.Drawing.Size(76, 33);
             this.label13.TabIndex = 13;
             this.label13.Text = "Categories:";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -114,9 +114,9 @@ namespace VotingApp.Admin.Forms
             // 
             this.labelDueDate.AutoSize = true;
             this.labelDueDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDueDate.Location = new System.Drawing.Point(90, 240);
+            this.labelDueDate.Location = new System.Drawing.Point(90, 170);
             this.labelDueDate.Name = "labelDueDate";
-            this.labelDueDate.Size = new System.Drawing.Size(218, 47);
+            this.labelDueDate.Size = new System.Drawing.Size(218, 33);
             this.labelDueDate.TabIndex = 12;
             this.labelDueDate.Text = "Due Date Label";
             this.labelDueDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -125,9 +125,9 @@ namespace VotingApp.Admin.Forms
             // 
             this.label11.AutoSize = true;
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Location = new System.Drawing.Point(8, 240);
+            this.label11.Location = new System.Drawing.Point(8, 170);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(76, 47);
+            this.label11.Size = new System.Drawing.Size(76, 33);
             this.label11.TabIndex = 11;
             this.label11.Text = "Due Date:";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -136,9 +136,9 @@ namespace VotingApp.Admin.Forms
             // 
             this.labelVotersCount.AutoSize = true;
             this.labelVotersCount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelVotersCount.Location = new System.Drawing.Point(90, 193);
+            this.labelVotersCount.Location = new System.Drawing.Point(90, 137);
             this.labelVotersCount.Name = "labelVotersCount";
-            this.labelVotersCount.Size = new System.Drawing.Size(218, 47);
+            this.labelVotersCount.Size = new System.Drawing.Size(218, 33);
             this.labelVotersCount.TabIndex = 10;
             this.labelVotersCount.Text = "Voters Count Label";
             this.labelVotersCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -147,9 +147,9 @@ namespace VotingApp.Admin.Forms
             // 
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(8, 193);
+            this.label9.Location = new System.Drawing.Point(8, 137);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(76, 47);
+            this.label9.Size = new System.Drawing.Size(76, 33);
             this.label9.TabIndex = 9;
             this.label9.Text = "Voters Count:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -158,9 +158,9 @@ namespace VotingApp.Admin.Forms
             // 
             this.labelCreatedDate.AutoSize = true;
             this.labelCreatedDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelCreatedDate.Location = new System.Drawing.Point(90, 146);
+            this.labelCreatedDate.Location = new System.Drawing.Point(90, 104);
             this.labelCreatedDate.Name = "labelCreatedDate";
-            this.labelCreatedDate.Size = new System.Drawing.Size(218, 47);
+            this.labelCreatedDate.Size = new System.Drawing.Size(218, 33);
             this.labelCreatedDate.TabIndex = 8;
             this.labelCreatedDate.Text = "Created Date Label";
             this.labelCreatedDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -169,9 +169,9 @@ namespace VotingApp.Admin.Forms
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(8, 146);
+            this.label7.Location = new System.Drawing.Point(8, 104);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 47);
+            this.label7.Size = new System.Drawing.Size(76, 33);
             this.label7.TabIndex = 7;
             this.label7.Text = "Created Date:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -180,9 +180,9 @@ namespace VotingApp.Admin.Forms
             // 
             this.labelDescription.AutoSize = true;
             this.labelDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDescription.Location = new System.Drawing.Point(90, 99);
+            this.labelDescription.Location = new System.Drawing.Point(90, 71);
             this.labelDescription.Name = "labelDescription";
-            this.labelDescription.Size = new System.Drawing.Size(218, 47);
+            this.labelDescription.Size = new System.Drawing.Size(218, 33);
             this.labelDescription.TabIndex = 6;
             this.labelDescription.Text = "Description Label";
             this.labelDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -191,9 +191,9 @@ namespace VotingApp.Admin.Forms
             // 
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(8, 99);
+            this.label5.Location = new System.Drawing.Point(8, 71);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 47);
+            this.label5.Size = new System.Drawing.Size(76, 33);
             this.label5.TabIndex = 5;
             this.label5.Text = "Description:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -202,9 +202,9 @@ namespace VotingApp.Admin.Forms
             // 
             this.labelName.AutoSize = true;
             this.labelName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelName.Location = new System.Drawing.Point(90, 52);
+            this.labelName.Location = new System.Drawing.Point(90, 38);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(218, 47);
+            this.labelName.Size = new System.Drawing.Size(218, 33);
             this.labelName.TabIndex = 4;
             this.labelName.Text = "Name Label";
             this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -213,9 +213,9 @@ namespace VotingApp.Admin.Forms
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(8, 52);
+            this.label3.Location = new System.Drawing.Point(8, 38);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 47);
+            this.label3.Size = new System.Drawing.Size(76, 33);
             this.label3.TabIndex = 3;
             this.label3.Text = "Name:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -226,7 +226,7 @@ namespace VotingApp.Admin.Forms
             this.labelID.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelID.Location = new System.Drawing.Point(90, 5);
             this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(218, 47);
+            this.labelID.Size = new System.Drawing.Size(218, 33);
             this.labelID.TabIndex = 2;
             this.labelID.Text = "ID Label";
             this.labelID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -237,7 +237,7 @@ namespace VotingApp.Admin.Forms
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(8, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 47);
+            this.label1.Size = new System.Drawing.Size(76, 33);
             this.label1.TabIndex = 1;
             this.label1.Text = "ID:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -252,7 +252,7 @@ namespace VotingApp.Admin.Forms
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.buttonUpdate, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.buttonDelete, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(146, 343);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(146, 243);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -268,6 +268,7 @@ namespace VotingApp.Admin.Forms
             this.buttonUpdate.TabIndex = 0;
             this.buttonUpdate.Text = "Update";
             this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // buttonDelete
             // 
@@ -278,12 +279,13 @@ namespace VotingApp.Admin.Forms
             this.buttonDelete.TabIndex = 1;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // VotingItemDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(316, 380);
+            this.ClientSize = new System.Drawing.Size(316, 280);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "VotingItemDetailForm";
             this.Text = "Voting Item Details";

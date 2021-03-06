@@ -79,7 +79,7 @@ namespace VotingApp.Admin.Forms
             this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label13.Location = new System.Drawing.Point(8, 185);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(69, 60);
+            this.label13.Size = new System.Drawing.Size(70, 60);
             this.label13.TabIndex = 13;
             this.label13.Text = "Categories:";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -90,7 +90,7 @@ namespace VotingApp.Admin.Forms
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label11.Location = new System.Drawing.Point(8, 125);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(69, 60);
+            this.label11.Size = new System.Drawing.Size(70, 60);
             this.label11.TabIndex = 11;
             this.label11.Text = "Due Date:";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -101,7 +101,7 @@ namespace VotingApp.Admin.Forms
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Location = new System.Drawing.Point(8, 65);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 60);
+            this.label5.Size = new System.Drawing.Size(70, 60);
             this.label5.TabIndex = 5;
             this.label5.Text = "Description:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -112,7 +112,7 @@ namespace VotingApp.Admin.Forms
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Location = new System.Drawing.Point(8, 5);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 60);
+            this.label3.Size = new System.Drawing.Size(70, 60);
             this.label3.TabIndex = 3;
             this.label3.Text = "Name:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -146,35 +146,36 @@ namespace VotingApp.Admin.Forms
             // textBoxName
             // 
             this.textBoxName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxName.Location = new System.Drawing.Point(83, 25);
+            this.textBoxName.Location = new System.Drawing.Point(84, 25);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(258, 20);
+            this.textBoxName.Size = new System.Drawing.Size(257, 20);
             this.textBoxName.TabIndex = 0;
             // 
             // richTextBoxDescription
             // 
             this.richTextBoxDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBoxDescription.Location = new System.Drawing.Point(83, 68);
+            this.richTextBoxDescription.Location = new System.Drawing.Point(84, 68);
             this.richTextBoxDescription.Name = "richTextBoxDescription";
-            this.richTextBoxDescription.Size = new System.Drawing.Size(258, 54);
+            this.richTextBoxDescription.Size = new System.Drawing.Size(257, 54);
             this.richTextBoxDescription.TabIndex = 2;
             this.richTextBoxDescription.Text = "";
             // 
             // comboBoxCategories
             // 
             this.comboBoxCategories.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxCategories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCategories.FormattingEnabled = true;
-            this.comboBoxCategories.Location = new System.Drawing.Point(83, 204);
+            this.comboBoxCategories.Location = new System.Drawing.Point(84, 204);
             this.comboBoxCategories.Name = "comboBoxCategories";
-            this.comboBoxCategories.Size = new System.Drawing.Size(258, 21);
+            this.comboBoxCategories.Size = new System.Drawing.Size(257, 21);
             this.comboBoxCategories.TabIndex = 5;
             // 
             // dateTimePickerDueDate
             // 
             this.dateTimePickerDueDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePickerDueDate.Location = new System.Drawing.Point(83, 145);
+            this.dateTimePickerDueDate.Location = new System.Drawing.Point(84, 145);
             this.dateTimePickerDueDate.Name = "dateTimePickerDueDate";
-            this.dateTimePickerDueDate.Size = new System.Drawing.Size(258, 20);
+            this.dateTimePickerDueDate.Size = new System.Drawing.Size(257, 20);
             this.dateTimePickerDueDate.TabIndex = 4;
             this.dateTimePickerDueDate.Value = new System.DateTime(2021, 3, 6, 20, 34, 46, 0);
             // 
