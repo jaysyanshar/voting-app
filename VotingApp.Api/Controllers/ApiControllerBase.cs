@@ -67,7 +67,7 @@ namespace VotingApp.Api.Controllers
             if( !value.ValidateFields() )
                 return ValidationProblem();
 
-            Context.Entry( value ).State = EntityState.Modified;
+            Context.DetachLocal( id, value );
 
             try
             {
