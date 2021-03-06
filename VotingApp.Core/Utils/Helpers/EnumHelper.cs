@@ -8,5 +8,10 @@ namespace VotingApp.Core.Utils.Helpers
         {
             return ( T ) Enum.Parse( typeof( T ), value, true );
         }
+
+        public static string ToEnumString<T>( this T value )
+        {
+            return value.ToString();
+        }
     }
 }

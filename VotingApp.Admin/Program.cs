@@ -1,46 +1,28 @@
 ﻿using System;
 using System.Net.Http;
-using System.Threading.Tasks;
-using VotingApp.Admin.Pages;
-using VotingApp.Core.Models;
+using System.Windows.Forms;
+using VotingApp.Admin.Forms;
+using VotingApp.Core.Services;
 
 namespace VotingApp.Admin
 {
-    internal class Program
+    internal static class Program
     {
-        private static readonly HttpClient _client = new HttpClient();
-        private static Session _session;
-
-        private static void Main( string[] args )
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        private static void Main()
         {
-            LoginPage loginPage = new LoginPage();
-            LoginState:
-            Console.Clear();
-            loginPage.Render();
-            Task<Session> tLogin = loginPage.TryLogin( _client );
-            tLogin.Wait();
-
-            if( tLogin.Result == null )
-                goto LoginState;
-
-            _session = tLogin.Result;
-
-            MainMenuPage mainMenuPage = new MainMenuPage( _session );
-            MainMenuState:
-            Console.Clear();
-            mainMenuPage.Render();
-            Task<bool> tMainMenu = mainMenuPage.GotoSelected( _client );
-            tMainMenu.Wait();
-
-            if( tMainMenu.Result == false )
-                goto MainMenuState;
-
-            Console.WriteLine( "Done" );
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            RegisterDependencies();
+            Application.Run(new LoginForm());
         }
 
-        private static void Login()
+        private static void RegisterDependencies()
         {
-
+            DependencyService.RegisterSingleton<HttpClient, HttpClient>( new HttpClient() );
         }
     }
 }
