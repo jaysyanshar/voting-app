@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using VotingApp.Admin.Repositories;
 using VotingApp.Core.Models;
@@ -39,9 +38,13 @@ namespace VotingApp.Admin.Forms
 
         private async void buttonLogin_Click( object sender, EventArgs e )
         {
-            Session login = await _session.Login( textBoxEmail.Text, textBoxPassword.Text, UserRole.Type.Admin );
-            if( login == null )
+            RepositoryResponse<Session> login = await _session.Login( textBoxEmail.Text, textBoxPassword.Text, UserRole.Type.Admin );
+            if( !login.Success )
+            {
+                MessageBox.Show( $@"Login error. Code: {login.StatusCode}", @"Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error );
                 return;
+            }
 
             Hide();
 

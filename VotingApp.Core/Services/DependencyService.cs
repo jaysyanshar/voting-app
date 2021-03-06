@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace VotingApp.Core.Services
 {
@@ -6,15 +7,34 @@ namespace VotingApp.Core.Services
     {
         private static readonly IDictionary<string, object> _container = new Dictionary<string, object>();
 
-        public static void RegisterSingleton<TService, TImplementation>( TImplementation implementation )
+        public static bool RegisterSingleton<TService, TImplementation>( TImplementation implementation )
             where TImplementation : class, TService
         {
-            _container.Add( nameof( TService ), implementation );
+            _container.Add( GetName<TService>(), implementation );
+            return _container.ContainsKey( GetName<TService>() );
         }
 
         public static TService Resolve<TService>()
         {
-            return ( TService ) _container[nameof( TService )];
+            try
+            {
+                return ( TService ) _container[GetName<TService>()];
+
+            }
+            catch
+            {
+                return default;
+            }
+        }
+
+        public static bool Remove<TService>()
+        {
+            return _container.Remove( GetName<TService>() );
+        }
+
+        private static string GetName<T>()
+        {
+            return typeof( T ).Name;
         }
     }
 }

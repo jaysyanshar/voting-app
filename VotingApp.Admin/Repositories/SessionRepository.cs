@@ -1,4 +1,6 @@
-﻿using System.Net.Http;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using VotingApp.Core.Models;
 using VotingApp.Core.Services;
@@ -15,7 +17,7 @@ namespace VotingApp.Admin.Repositories
         {
         }
 
-        public async Task<Session> Login( string email, string password, UserRole.Type role )
+        public async Task<RepositoryResponse<Session>> Login( string email, string password, UserRole.Type role )
         {
             if( !ValidationHelper.ValidateEmail( email ) || !ValidationHelper.ValidatePassword( password ) )
                 return null;
@@ -28,19 +30,23 @@ namespace VotingApp.Admin.Repositories
             };
 
             HttpContent content = CreateContent( login );
-            Session result = await RequestPost<Session>( LOGIN_URI, content );
-            if( result == null )
-                return null;
+            RepositoryResponse<Session> result = await RequestPost<Session>( LOGIN_URI, content );
+            if( !result.Success )
+                return result;
 
-            Client.DefaultRequestHeaders.Add( nameof( Session ), result.Id );
+            if( DependencyService.Resolve<Session>() == null )
+                DependencyService.RegisterSingleton<Session, Session>( result.Content );
+
             return result;
         }
 
-        public async Task<bool> Logout()
+        public async Task<RepositoryResponse> Logout()
         {
-            bool logout = await RequestDelete( LOGOUT_URI );
-            if( logout )
-                Client.DefaultRequestHeaders.Remove( nameof( Session ) );
+            KeyValuePair<string, string> sessionHeader = GetSessionHeader();
+            HttpContent content = CreateContent<Session>( null, sessionHeader );
+            RepositoryResponse logout = await RequestUpdate( LOGOUT_URI, content );
+            if( logout.Success )
+                DependencyService.Remove<Session>();
 
             return logout;
         }

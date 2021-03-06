@@ -230,6 +230,7 @@ namespace VotingApp.Admin.Forms
             this.buttonLogout.TabIndex = 9;
             this.buttonLogout.Text = "Logout";
             this.buttonLogout.UseVisualStyleBackColor = true;
+            this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
             // VotingItemsForm
             // 
