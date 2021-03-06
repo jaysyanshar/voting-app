@@ -149,11 +149,13 @@ namespace VotingApp.Admin.Forms
 
         private void buttonAdd_Click( object sender, EventArgs e )
         {
-            Hide();
-
             AddVotingItemForm addItemForm = new AddVotingItemForm();
-            addItemForm.Closed += ( s, args ) => Close();
-            addItemForm.Show();
+            DialogResult dialogResult = addItemForm.ShowDialog();
+            if( dialogResult != DialogResult.OK )
+                return;
+
+            _currentPage = 0;
+            LoadItemsByPage();
         }
 
         private void buttonCategories_Click( object sender, EventArgs e )
@@ -171,10 +173,11 @@ namespace VotingApp.Admin.Forms
 
             VotingItemDetailForm form = new VotingItemDetailForm( selected );
             DialogResult dialogResult = form.ShowDialog();
-            if( dialogResult == DialogResult.OK )
-            {
-                LoadItemsByPage();
-            }
+            if( dialogResult != DialogResult.OK )
+                return;
+
+            _currentPage = 0;
+            LoadItemsByPage();
         }
 
         private void buttonNext_Click( object sender, EventArgs e )

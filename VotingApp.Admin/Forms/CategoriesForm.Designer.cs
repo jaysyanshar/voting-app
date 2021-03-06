@@ -43,8 +43,10 @@ namespace VotingApp.Admin.Forms
             // listViewCategories
             // 
             this.listViewCategories.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeaderId,
-            this.columnHeaderName});
+            this.columnHeaderName,
+            this.columnHeaderId});
+            this.listViewCategories.FullRowSelect = true;
+            this.listViewCategories.GridLines = true;
             this.listViewCategories.HideSelection = false;
             this.listViewCategories.Location = new System.Drawing.Point(13, 71);
             this.listViewCategories.Name = "listViewCategories";
@@ -113,6 +115,7 @@ namespace VotingApp.Admin.Forms
             this.buttonAdd.TabIndex = 1;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // CategoriesForm
             // 
@@ -126,6 +129,7 @@ namespace VotingApp.Admin.Forms
             this.Controls.Add(this.tableLayoutPanel2);
             this.Name = "CategoriesForm";
             this.Text = "Voting App - Admin";
+            this.Load += new System.EventHandler(this.CategoriesForm_Load);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);

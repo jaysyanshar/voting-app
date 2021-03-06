@@ -44,11 +44,8 @@ namespace VotingApp.Admin.Forms
                 return;
             }
 
-            Hide();
-
-            VotingItemsForm form = new VotingItemsForm();
-            form.Closed += ( s, args ) => Close();
-            form.Show();
+            DialogResult = DialogResult.OK;
+            Close();
         }
 
         private void AddVotingItemForm_Load( object sender, EventArgs e )
