@@ -97,9 +97,12 @@
     <Compile Include="Forms\VotingItemsForm.Designer.cs">
       <DependentUpon>VotingItemsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\CategoryItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\SessionRepository.cs" />
+    <Compile Include="Repositories\VotingItemRepository.cs" />
     <EmbeddedResource Include="Forms\AddCategoryForm.resx">
       <DependentUpon>AddCategoryForm.cs</DependentUpon>
     </EmbeddedResource>

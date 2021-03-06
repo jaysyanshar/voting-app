@@ -47,6 +47,14 @@ namespace VotingApp.Core.Services
             return session == null ? default : new KeyValuePair<string, string>( nameof( Session ), session.Id );
         }
 
+        protected IDictionary<string, string> GetSessionHeaderInDictionary()
+        {
+            Dictionary<string, string> headers = new();
+            KeyValuePair<string, string> sessionHeader = GetSessionHeader();
+            headers.Add( sessionHeader.Key, sessionHeader.Value );
+            return headers;
+        }
+
         protected virtual async Task<RepositoryResponse<TReturn>> RequestGet<TReturn>( string uri,
             IDictionary<string, string> headers = null )
             where TReturn : class

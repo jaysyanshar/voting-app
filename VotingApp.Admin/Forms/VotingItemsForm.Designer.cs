@@ -38,10 +38,10 @@ namespace VotingApp.Admin.Forms
             this.buttonPrev = new System.Windows.Forms.Button();
             this.buttonNext = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBoxFilter = new System.Windows.Forms.TextBox();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonFilter = new System.Windows.Forms.Button();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.comboBoxFilter = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -59,6 +59,8 @@ namespace VotingApp.Admin.Forms
             this.columnHeaderCategory,
             this.columnHeaderDueDate,
             this.columnHeaderVotersCount});
+            this.listViewVotingItems.FullRowSelect = true;
+            this.listViewVotingItems.GridLines = true;
             this.listViewVotingItems.HideSelection = false;
             this.listViewVotingItems.Location = new System.Drawing.Point(13, 71);
             this.listViewVotingItems.Name = "listViewVotingItems";
@@ -66,6 +68,7 @@ namespace VotingApp.Admin.Forms
             this.listViewVotingItems.TabIndex = 4;
             this.listViewVotingItems.UseCompatibleStateImageBehavior = false;
             this.listViewVotingItems.View = System.Windows.Forms.View.Details;
+            this.listViewVotingItems.DoubleClick += new System.EventHandler(this.listViewVotingItems_DoubleClick);
             // 
             // columnHeaderItemName
             // 
@@ -80,11 +83,13 @@ namespace VotingApp.Admin.Forms
             // columnHeaderDueDate
             // 
             this.columnHeaderDueDate.Text = "Due Date";
+            this.columnHeaderDueDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeaderDueDate.Width = 109;
             // 
             // columnHeaderVotersCount
             // 
             this.columnHeaderVotersCount.Text = "Voters Count";
+            this.columnHeaderVotersCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeaderVotersCount.Width = 91;
             // 
             // buttonAdd
@@ -95,6 +100,7 @@ namespace VotingApp.Admin.Forms
             this.buttonAdd.TabIndex = 5;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonPrev
             // 
@@ -104,6 +110,7 @@ namespace VotingApp.Admin.Forms
             this.buttonPrev.TabIndex = 7;
             this.buttonPrev.Text = "<<";
             this.buttonPrev.UseVisualStyleBackColor = true;
+            this.buttonPrev.Click += new System.EventHandler(this.buttonPrev_Click);
             // 
             // buttonNext
             // 
@@ -113,16 +120,17 @@ namespace VotingApp.Admin.Forms
             this.buttonNext.TabIndex = 6;
             this.buttonNext.Text = ">>";
             this.buttonNext.UseVisualStyleBackColor = true;
+            this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 74.20382F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.79618F));
-            this.tableLayoutPanel1.Controls.Add(this.textBoxFilter, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.buttonSearch, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.buttonFilter, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.textBoxSearch, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.comboBoxFilter, 0, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(474, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
@@ -130,14 +138,6 @@ namespace VotingApp.Admin.Forms
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(314, 53);
             this.tableLayoutPanel1.TabIndex = 2;
-            // 
-            // textBoxFilter
-            // 
-            this.textBoxFilter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxFilter.Location = new System.Drawing.Point(3, 29);
-            this.textBoxFilter.Name = "textBoxFilter";
-            this.textBoxFilter.Size = new System.Drawing.Size(226, 20);
-            this.textBoxFilter.TabIndex = 2;
             // 
             // buttonSearch
             // 
@@ -149,6 +149,7 @@ namespace VotingApp.Admin.Forms
             this.buttonSearch.TabIndex = 1;
             this.buttonSearch.Text = "Search";
             this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // buttonFilter
             // 
@@ -160,6 +161,7 @@ namespace VotingApp.Admin.Forms
             this.buttonFilter.TabIndex = 3;
             this.buttonFilter.Text = "Filter";
             this.buttonFilter.UseVisualStyleBackColor = true;
+            this.buttonFilter.Click += new System.EventHandler(this.buttonFilter_Click);
             // 
             // textBoxSearch
             // 
@@ -168,6 +170,15 @@ namespace VotingApp.Admin.Forms
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(226, 20);
             this.textBoxSearch.TabIndex = 0;
+            // 
+            // comboBoxFilter
+            // 
+            this.comboBoxFilter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxFilter.FormattingEnabled = true;
+            this.comboBoxFilter.Location = new System.Drawing.Point(3, 29);
+            this.comboBoxFilter.Name = "comboBoxFilter";
+            this.comboBoxFilter.Size = new System.Drawing.Size(226, 21);
+            this.comboBoxFilter.TabIndex = 4;
             // 
             // label1
             // 
@@ -221,6 +232,7 @@ namespace VotingApp.Admin.Forms
             this.buttonCategories.TabIndex = 8;
             this.buttonCategories.Text = "Categories";
             this.buttonCategories.UseVisualStyleBackColor = true;
+            this.buttonCategories.Click += new System.EventHandler(this.buttonCategories_Click);
             // 
             // buttonLogout
             // 
@@ -245,6 +257,7 @@ namespace VotingApp.Admin.Forms
             this.Controls.Add(this.listViewVotingItems);
             this.Name = "VotingItemsForm";
             this.Text = "Voting App - Admin";
+            this.Load += new System.EventHandler(this.VotingItemsForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -262,7 +275,6 @@ namespace VotingApp.Admin.Forms
         private System.Windows.Forms.Button buttonPrev;
         private System.Windows.Forms.Button buttonNext;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TextBox textBoxFilter;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Button buttonFilter;
         private System.Windows.Forms.TextBox textBoxSearch;
@@ -275,5 +287,6 @@ namespace VotingApp.Admin.Forms
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button buttonCategories;
         private System.Windows.Forms.Button buttonLogout;
+        private System.Windows.Forms.ComboBox comboBoxFilter;
     }
 }

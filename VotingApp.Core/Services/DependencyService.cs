@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace VotingApp.Core.Services
 {
@@ -10,6 +9,9 @@ namespace VotingApp.Core.Services
         public static bool RegisterSingleton<TService, TImplementation>( TImplementation implementation )
             where TImplementation : class, TService
         {
+            if( _container.ContainsKey( GetName<TService>() ) )
+                return false;
+
             _container.Add( GetName<TService>(), implementation );
             return _container.ContainsKey( GetName<TService>() );
         }
