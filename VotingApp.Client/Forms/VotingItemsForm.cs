@@ -230,5 +230,16 @@ namespace VotingApp.Client.Forms
 
             labelUserEmail.Text = _user;
         }
+
+        private void buttonRegister_Click(object sender, EventArgs e)
+        {
+            RegisterForm form = new RegisterForm();
+            DialogResult dialogResult = form.ShowDialog();
+            if( dialogResult == DialogResult.OK )
+            {
+                MessageBox.Show( @"Register completed! Please login to use the whole features of the app.", @"Success",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information );
+            }
+        }
     }
 }

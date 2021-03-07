@@ -234,6 +234,7 @@ namespace VotingApp.Client.Forms
             this.buttonRegister.TabIndex = 8;
             this.buttonRegister.Text = "Register";
             this.buttonRegister.UseVisualStyleBackColor = true;
+            this.buttonRegister.Click += new System.EventHandler(this.buttonRegister_Click);
             // 
             // tableLayoutPanel4
             // 

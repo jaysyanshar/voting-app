@@ -32,7 +32,7 @@ namespace VotingApp.Client.Forms
             _votes = new VoteRepository( client );
         }
 
-        private void VotingItemDetailForm_Load(object sender, System.EventArgs e)
+        private void VotingItemDetailForm_Load(object sender, EventArgs e)
         {
             InitializeLabels();
             if( !_login )
@@ -78,7 +78,7 @@ namespace VotingApp.Client.Forms
             buttonVote.Enabled = false;
         }
 
-        private async void buttonVote_Click( object sender, System.EventArgs e )
+        private async void buttonVote_Click( object sender, EventArgs e )
         {
             if( !_login )
                 return;
