@@ -1,6 +1,4 @@
-﻿using VotingApp.Core.Models;
-
-namespace VotingApp.Admin.Models
+﻿namespace VotingApp.Core.Models
 {
     public class CategoryItem : Category
     {

@@ -65,6 +65,18 @@ namespace VotingApp.Api.Controllers
             return await base.Post( value );
         }
 
+        [HttpGet( "{userEmail}/{itemId}" )]
+        public async Task<ActionResult<VoteRecord>> Get( string userEmail, string itemId )
+        {
+            VoteRecord value = await Context.DataSet.FirstOrDefaultAsync( v =>
+                v.UserEmail.Equals( userEmail ) && v.VotingItemId.Equals( itemId ) );
+
+            if( value == null )
+                return NotFound();
+
+            return value;
+        }
+
         public override async Task<ActionResult<VoteRecord>> Post( VoteRecord value ) => NotFound();
 
         public override async Task<IActionResult> Put( string id, VoteRecord value ) => NotFound();

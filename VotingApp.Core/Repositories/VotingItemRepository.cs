@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using VotingApp.Core.Models;
 using VotingApp.Core.Services;
 
-namespace VotingApp.Admin.Repositories
+namespace VotingApp.Core.Repositories
 {
-    public class VotingItemRepository : RepositoryBase, IRepository<string, VotingItem>
+    public class VotingItemRepository : RepositoryBase, IDataStore<string, VotingItem>
     {
         private const string VOTING_ITEMS_URI = @"VotingItems";
         private const string VOTING_ITEMS_PAGE_URI = @"VotingItems/Page";

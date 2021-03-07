@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using VotingApp.Core.Models;
 using VotingApp.Core.Services;
 using VotingApp.Core.Utils.Helpers;
 
-namespace VotingApp.Admin.Repositories
+namespace VotingApp.Core.Repositories
 {
     public class SessionRepository : RepositoryBase
     {

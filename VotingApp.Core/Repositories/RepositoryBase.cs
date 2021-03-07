@@ -5,9 +5,10 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using VotingApp.Core.Models;
+using VotingApp.Core.Services;
 using VotingApp.Core.Utils.Helpers;
 
-namespace VotingApp.Core.Services
+namespace VotingApp.Core.Repositories
 {
     public abstract class RepositoryBase
     {
@@ -44,7 +45,7 @@ namespace VotingApp.Core.Services
         protected KeyValuePair<string, string> GetSessionHeader()
         {
             Session session = DependencyService.Resolve<Session>();
-            return session == null ? default : new KeyValuePair<string, string>( nameof( Session ), session.Id );
+            return new KeyValuePair<string, string>( nameof( Session ), session?.Id ?? string.Empty );
         }
 
         protected IDictionary<string, string> GetSessionHeaderInDictionary()

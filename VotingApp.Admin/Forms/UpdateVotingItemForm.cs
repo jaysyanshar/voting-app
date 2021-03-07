@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Windows.Forms;
-using VotingApp.Admin.Models;
-using VotingApp.Admin.Repositories;
 using VotingApp.Core.Models;
+using VotingApp.Core.Repositories;
 using VotingApp.Core.Services;
 
 namespace VotingApp.Admin.Forms

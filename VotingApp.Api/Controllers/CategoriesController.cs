@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using VotingApp.Api.DataContexts;
 using VotingApp.Core.Models;
@@ -20,23 +19,6 @@ namespace VotingApp.Api.Controllers
         }
 
         // TODO: A-6
-        public override async Task<ActionResult<IEnumerable<Category>>> GetMany()
-        {
-            StatusCodeResult result = await SessionCheck();
-            if( !( result is OkResult ) )
-                return result;
-
-            return await base.GetMany();
-        }
-
-        public override async Task<ActionResult<Category>> Get( string id )
-        {
-            StatusCodeResult result = await SessionCheck();
-            if( !( result is OkResult ) )
-                return result;
-
-            return await base.Get( id );
-        }
 
         public override async Task<ActionResult<Category>> Post( Category value )
         {

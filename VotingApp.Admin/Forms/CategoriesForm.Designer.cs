@@ -30,8 +30,8 @@ namespace VotingApp.Admin.Forms
         private void InitializeComponent()
         {
             this.listViewCategories = new System.Windows.Forms.ListView();
-            this.columnHeaderId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonDelete = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -55,15 +55,15 @@ namespace VotingApp.Admin.Forms
             this.listViewCategories.UseCompatibleStateImageBehavior = false;
             this.listViewCategories.View = System.Windows.Forms.View.Details;
             // 
-            // columnHeaderId
-            // 
-            this.columnHeaderId.Text = "ID";
-            this.columnHeaderId.Width = 185;
-            // 
             // columnHeaderName
             // 
             this.columnHeaderName.Text = "Name";
             this.columnHeaderName.Width = 148;
+            // 
+            // columnHeaderId
+            // 
+            this.columnHeaderId.Text = "ID";
+            this.columnHeaderId.Width = 185;
             // 
             // buttonDelete
             // 
@@ -73,6 +73,7 @@ namespace VotingApp.Admin.Forms
             this.buttonDelete.TabIndex = 3;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // label1
             // 
@@ -106,6 +107,7 @@ namespace VotingApp.Admin.Forms
             this.buttonUpdate.TabIndex = 2;
             this.buttonUpdate.Text = "Update";
             this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // buttonAdd
             // 
@@ -129,6 +131,7 @@ namespace VotingApp.Admin.Forms
             this.Controls.Add(this.tableLayoutPanel2);
             this.Name = "CategoriesForm";
             this.Text = "Voting App - Admin";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CategoriesForm_FormClosing);
             this.Load += new System.EventHandler(this.CategoriesForm_Load);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();

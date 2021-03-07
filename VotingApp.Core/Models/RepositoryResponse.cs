@@ -2,7 +2,7 @@
 
 namespace VotingApp.Core.Models
 {
-    public class RepositoryResponse<T> : RepositoryResponse where T : class
+    public class RepositoryResponse<T> : RepositoryResponse
     {
         public T Content { get; set; }
     }

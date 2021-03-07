@@ -6,10 +6,12 @@ using VotingApp.Core.Models;
 using VotingApp.Core.Repositories;
 using VotingApp.Core.Services;
 
-namespace VotingApp.Admin.Forms
+namespace VotingApp.Client.Forms
 {
     public partial class VotingItemsForm : Form
     {
+        private const string ANONYMOUS_NAME = @"anonymous";
+
         private readonly SessionRepository _session;
         private readonly VotingItemRepository _votingItems;
         private readonly CategoryRepository _categories;
@@ -18,11 +20,15 @@ namespace VotingApp.Admin.Forms
         private  const int SKIP = 10;
         private int _currentPage;
 
+        private bool _isLoggedIn;
+        private string _user;
+
         public VotingItemsForm()
         {
             InitializeComponent();
 
             comboBoxFilter.DropDownStyle = ComboBoxStyle.DropDownList;
+            _user = ANONYMOUS_NAME;
 
             HttpClient client = DependencyService.Resolve<HttpClient>();
             _session = new SessionRepository( client );
@@ -128,50 +134,11 @@ namespace VotingApp.Admin.Forms
             LoadItemsByPage();
         }
 
-        private async void buttonLogout_Click( object sender, EventArgs e )
-        {
-            RepositoryResponse response = await _session.Logout();
-            if( !response.Success )
-            {
-                MessageBox.Show( $@"Logout error. Code: {response.StatusCode}", @"Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error );
-
-                return;
-            }
-
-            Hide();
-
-            LoginForm loginForm = new LoginForm();
-            loginForm.Closed += ( s, args ) => Close();
-            loginForm.Show();
-        }
-
-        private void buttonAdd_Click( object sender, EventArgs e )
-        {
-            AddVotingItemForm addItemForm = new AddVotingItemForm();
-            DialogResult dialogResult = addItemForm.ShowDialog();
-            if( dialogResult != DialogResult.OK )
-                return;
-
-            _currentPage = 0;
-            LoadItemsByPage();
-        }
-
-        private void buttonCategories_Click( object sender, EventArgs e )
-        {
-            CategoriesForm form = new CategoriesForm();
-            DialogResult dialogResult = form.ShowDialog();
-            if( dialogResult != DialogResult.OK )
-                return;
-
-            LoadCategories();
-        }
-
         private void listViewVotingItems_DoubleClick( object sender, EventArgs e )
         {
             VotingItem selected = ( VotingItem ) listViewVotingItems.SelectedItems[0].Tag;
 
-            VotingItemDetailForm form = new VotingItemDetailForm( selected );
+            VotingItemDetailForm form = new VotingItemDetailForm( selected, _isLoggedIn, _user );
             DialogResult dialogResult = form.ShowDialog();
             if( dialogResult != DialogResult.OK )
                 return;
@@ -217,5 +184,51 @@ namespace VotingApp.Admin.Forms
             LoadItemsByFilter();
         }
 
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            LoginForm form = new LoginForm();
+            DialogResult dialogResult = form.ShowDialog();
+            if( dialogResult != DialogResult.OK )
+                return;
+
+            _isLoggedIn = true;
+            _user = form.UserEmail;
+            ChangeState();
+        }
+
+        private async void buttonLogout_Click(object sender, EventArgs e)
+        {
+            RepositoryResponse response = await _session.Logout();
+            if( !response.Success )
+            {
+                MessageBox.Show( $@"Logout error. Code: {response.StatusCode}", @"Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error );
+                return;
+            }
+
+            _isLoggedIn = false;
+            _user = ANONYMOUS_NAME;
+            ChangeState();
+        }
+
+        private void ChangeState()
+        {
+            if(_isLoggedIn)
+            {
+                buttonLogin.Text = @"Logout";
+                buttonLogin.Click -= buttonLogin_Click;
+                buttonLogin.Click += buttonLogout_Click;
+                buttonRegister.Visible = false;
+            }
+            else
+            {
+                buttonLogin.Text = @"Login";
+                buttonLogin.Click -= buttonLogout_Click;
+                buttonLogin.Click += buttonLogin_Click;
+                buttonRegister.Visible = true;
+            }
+
+            labelUserEmail.Text = _user;
+        }
     }
 }

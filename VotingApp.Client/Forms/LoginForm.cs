@@ -7,13 +7,15 @@ using VotingApp.Core.Repositories;
 using VotingApp.Core.Services;
 using VotingApp.Core.Utils.Helpers;
 
-namespace VotingApp.Admin.Forms
+namespace VotingApp.Client.Forms
 {
     public partial class LoginForm : Form
     {
         private readonly SessionRepository _session;
         private bool _isValidEmail;
         private bool _isValidPassword;
+
+        public string UserEmail { get; private set; }
 
         public LoginForm()
         {
@@ -24,8 +26,8 @@ namespace VotingApp.Admin.Forms
             _session = new SessionRepository( client );
 
             // test only
-            textBoxEmail.Text = @"admin@voting.app";
-            textBoxPassword.Text = @"Admin123";
+            textBoxEmail.Text = @"anshar@voting.app";
+            textBoxPassword.Text = @"Jaysy123";
         }
 
         private void TryEnableLoginButton()
@@ -38,7 +40,9 @@ namespace VotingApp.Admin.Forms
 
         private async void buttonLogin_Click( object sender, EventArgs e )
         {
-            RepositoryResponse<Session> login = await _session.Login( textBoxEmail.Text, textBoxPassword.Text, UserRole.Type.Admin );
+            string email = textBoxEmail.Text;
+            string password = textBoxPassword.Text;
+            RepositoryResponse<Session> login = await _session.Login( email, password, UserRole.Type.Client );
             if( !login.Success )
             {
                 MessageBox.Show( $@"Login error. Code: {login.StatusCode}", @"Error", MessageBoxButtons.OK,
@@ -46,11 +50,8 @@ namespace VotingApp.Admin.Forms
                 return;
             }
 
-            Hide();
-
-            VotingItemsForm itemsForm = new VotingItemsForm();
-            itemsForm.Closed += ( s, args ) => Close();
-            itemsForm.Show();
+            UserEmail = email;
+            DialogResult = DialogResult.OK;
         }
 
         private void textBoxEmail_Validating( object sender, CancelEventArgs e )

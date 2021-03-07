@@ -5,7 +5,7 @@ using VotingApp.Core.Models;
 
 namespace VotingApp.Core.Services
 {
-    public interface IRepository<in TKey, TValue> where TValue : class
+    public interface IDataStore<in TKey, TValue> where TValue : class
     {
         Task<RepositoryResponse<TValue>> AddAsync( TValue data );
 
